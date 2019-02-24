@@ -11,12 +11,12 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 include_once '../config/database.php';
 
 // instantiate object
-include_once '../queries/object.php';
+include_once '../queries/lost-object.php';
 
 $database = new Database();
 $db = $database->getConnection();
 
-$object = new Object($db);
+$object = new LostObject($db);
 
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
@@ -37,21 +37,20 @@ if(
 
     // create the object
     if($object->create()){
-        set_response(201, "Object created succesfully.");
+        echo set_response(201, "Object created succesfully.");
     }
     else{
         // 503: service unavailable
-        set_response(503, "Unable to create product.");
+        echo set_response(503, "Unable to create product.");
     }
 }
 else{
-    set_response(400, "Unable to create product. Data is incomplete.");
+    echo set_response(400, "Unable to create product. Data is incomplete.");
 }
 
-function set_response(status, message) {
+function set_response( $status, $message) {
     // set response code
-    http_response_code(status);
+    http_response_code($status);
     // send to the user
-    echo json_encode(array("message" => message));
+    return json_encode(array("message" => $message));
 }
-?>

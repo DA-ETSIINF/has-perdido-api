@@ -23,17 +23,17 @@ $data = json_decode(file_get_contents("php://input"));
 
 // make sure data is not empty
 if(
-    !empty($data->name) &&
+    !empty($data->name)     &&
     !empty($data->category) &&
     !empty($data->color)
 ){
     // set object property values
-    $object->name =             trim($data->name);
-    $object->pricategoryce =    trim($data->category);
-    $object->description =      trim($data->description);
-    $object->color =            trim($data->color);
-    $object->place =            trim($data->place);
-    $object->createdAt =        date('Y-m-d H:i:s');
+    $object->name           =   trim($data->name);
+    $object->category       =   trim($data->category);
+    $object->description    =   trim($data->description);
+    $object->color          =   trim($data->color);
+    $object->place          =   trim($data->place);
+    $object->createdAt      =   date('Y-m-d H:i:s');
 
     // create the object
     if($object->create()){

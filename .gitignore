@@ -1,4 +1,27 @@
-./config/secrets.php
+# Global
+.*.swp
+.DS_Store
 
-.idea
-.vscode
+# Application
+api/app/composer.json
+api/app/composer.lock
+api/app/vendor/
+api/app/doc/
+api/app/report/
+data/
+
+# PHPStorm
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+
+# Netbeans
+nbproject/
+/nbproject/
+/nbproject/private/
+/nbproject/private/private.properties
+
+# SSL Certs
+etc/ssl/
+
+*/.idea/*

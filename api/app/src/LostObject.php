@@ -11,11 +11,11 @@ namespace App\Acme;
 
 class LostObject
 {
-    // database connection and table name
+    // database connection and table name:
     private $conn;
     private $table_name = "objects";
 
-    // object properties
+    // object properties:
     public $name, $description, $category, $color, $createdAt, $place;
 
 
@@ -27,14 +27,14 @@ class LostObject
      * @return bool
      */
     function create(){
-        // query to insert record
+        // query to insert record:
         $query = "INSERT INTO $this->table_name SET
                 name=:name, description=:description, category=:category, color=:color, createdAt=:createdAt, place=:place";
 
-        // prepare query
+        // prepare query:
         $stmt = $this->conn->prepare($query);
 
-        // sanitize
+        // sanitize:
         $this->name=$this->sanitize($this->name);
         $this->category=$this->sanitize($this->category);
         $this->color=$this->sanitize($this->color);
@@ -42,7 +42,7 @@ class LostObject
         $this->description=$this->sanitize($this->description);
         $this->place=$this->sanitize($this->place);
 
-        // bind values
+        // bind values:
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":description", $this->description);
         $stmt->bindParam(":category", $this->category);
@@ -50,7 +50,7 @@ class LostObject
         $stmt->bindParam(":createdAt", $this->createdAt);
         $stmt->bindParam(":place", $this->place);
 
-        // execute query
+        // execute query:
         if($stmt->execute()){
             return true;
         }
@@ -58,8 +58,26 @@ class LostObject
         return false;
     }
 
+    function delete(){
 
-    // constructor with $db as database connection
+        //prepare query:
+        $stmt = $this->conn->prepare($query);
+
+        //sanitize:
+        $this->id=$this->sanitize($this->id);
+
+        //bind value:
+        $stmt->bindParam(":id",$this->id);
+
+        //execute query:
+        if($stmt->execute()){
+            return true;
+        }
+
+        return false;
+    }
+
+    // constructor with $db as database connection:
     public function __construct($db){
         $this->conn = $db;
     }

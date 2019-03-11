@@ -5,8 +5,7 @@ namespace App\Acme;
 include_once 'LostObject.php';
 include_once 'functions.php';
 
-class Create
-{
+class Create {
     private $conn;
     private $data;
     public $response;

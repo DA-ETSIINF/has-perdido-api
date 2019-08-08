@@ -5,7 +5,7 @@ namespace App\Acme;
 include_once 'LostObject.php';
 include_once 'functions.php';
 
-class Delete  {
+class Delete {
 
     private $conn;
     private $data;
@@ -23,8 +23,9 @@ class Delete  {
         $lost_object->id = $this->data->id;
 
         //delete the object:
-        if($lost_object->delete()){
-            $this->response = setResponse(201, "Object deleted succesfully.");
+        if($lost_object->delete()) {
+            // 200: OK
+            $this->response = setResponse(200, "Object deleted succesfully.");
         }
         else{
             // 503: service unavailable

@@ -38,7 +38,6 @@ class LostObject
         $this->name=$this->sanitize($this->name);
         $this->category=$this->sanitize($this->category);
         $this->color=$this->sanitize($this->color);
-
         $this->description=$this->sanitize($this->description);
         $this->place=$this->sanitize($this->place);
 

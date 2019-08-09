@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Registro - Has Perdido</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <link href="styles.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<div class="register">
+			<h1>Nuevo usuario</h1>
+			<form action="index.php" method="post" autocomplete="off">
+                <label for="name">
+                    <i class="fas fa-user"></i>
+                </label>
+                <input type="text" name="name" placeholder="Nombre y apellidos" id="name" required>
+				
+				<label for="username">
+					<i class="fas fa-user"></i>
+				</label>
+				<input type="text" name="username" placeholder="Nombre de usuario" id="username" required>
+				
+				<label for="email">
+					<i class="fas fa-envelope"></i>
+				</label>
+                <input type="email" name="email" placeholder="Correo" id="email" required>
+				
+				<label for="password">
+                    <i class="fas fa-lock"></i>
+                </label>
+                <input type="password" name="password" placeholder="Contraseña" id="password" required>
+				
+				<input type="submit" value="Registrar">
+			</form>
+		</div>
+	</body>
+</html>

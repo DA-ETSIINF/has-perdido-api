@@ -11,13 +11,89 @@
 		<nav class="navtop">
 			<div>
 				<h1>Has Perdido</h1>
-				<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
-				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+				<a href="profile.php"><i class="fas fa-user-circle"></i>Mi Perfil</a>
+				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión</a>
 			</div>
 		</nav>
 		<div class="content">
-			<h2>Home Page</h2>
-			<p>Welcome back, <?=$_SESSION['name']?>!</p>
+			<h2>Página Principal</h2>
+			<p>Bienvenido, <?=$_SESSION['username']?>!</p>
+		</div>
+		<div class="content">
+			<input type="search" onkeydown="populate(this.value)" value="" id="searchBar"/>
+			<button type="button" class="fas fa-search" action="showTable()" />
+			<ul id="searchResults">
+			
+			</ul>
+		</div>
+		<div id="objectTable" style="display:none">
+			<table>
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Categoría</th>
+						<th>Descripción</th>
+						<th>Color</th>
+						<th>Fecha de pérdida</th>
+					</tr>
+				</thead>
+			</table>
 		</div>
 	</body>
+	<footer>
+		<!-- Links a distintas páginas de delegación-->
+	</footer>
 </html>
+
+<script>
+	var objectList;
+	function populate(string){
+    	function insertList(object){
+        	list = document.getElementById('searchResults');
+
+        	for(i = 0; i < object.length; i++){
+            	item = document.createElement('li');
+            	item.innerHTML = '<a href="#">' + object[i].columnname + '</a>';
+            	list.appendChild(item);
+        	}
+
+        	results = document.getElementById('searchResults');
+        	if(results.childNodes.length == 0){
+            	results.style.display = 'none';
+            	objectList = list;
+        	}else{
+            	results.style.display = 'block';
+        	}
+    	}
+
+    	xhr = new XMLHTTPRequest();
+    	xhr.onreadystatechange = function(){
+        	if(this.readyState == 4){
+            	insertList(this.responseText)
+        	}
+    	}
+
+    	xhr.open('POST','/search',true);
+    	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    	xhr.send('string='+string);
+	}
+	
+	function showTable() {
+		if (objectList.length > 0) {
+			table = document.getElementById('objectTable');
+
+			for(i = 0; i < objectList.length; i++){
+            	item = document.createElement('tr');
+            	item.innerHTML = '<td href="#">' + objectList.name + '</td>' +
+            					'<td href="#">' + objectList.category + '</td>' +
+            					'<td href="#">' + objectList.description + '</td>' +
+            					'<td href="#">' + objectList.color + '</td>' +
+            					'<td href="#">' + objectList.createdAt + '</td>' +
+            					'<td href="#">' + objectList.place + '</td>' +;
+            	table.appendChild(item);
+        	}
+			
+			document.getElementById("objectTable").style.display = 'visible';
+		}
+	}
+</script>

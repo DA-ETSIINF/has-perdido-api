@@ -20,7 +20,7 @@
 			<p>Bienvenido, <?=$_SESSION['username']?>!</p>
 		</div>
 		<div class="content">
-			<input type="search" onkeydown="populate(this.value)" value="" id="searchBar"/>
+			<input type="search" onkeydown="populate(this.value)" value="" id="searchBar" placeholder="Introduzca el objeto a buscar..."/>
 			<button type="button" class="fas fa-search" action="showTable()" />
 			<ul id="searchResults">
 			
@@ -53,7 +53,7 @@
 
         	for(i = 0; i < object.length; i++){
             	item = document.createElement('li');
-            	item.innerHTML = '<a href="#">' + object[i].columnname + '</a>';
+            	item.innerHTML = '<a href="#">' + object[i].name + '</a>';
             	list.appendChild(item);
         	}
 
@@ -84,12 +84,12 @@
 
 			for(i = 0; i < objectList.length; i++){
             	item = document.createElement('tr');
-            	item.innerHTML = '<td href="#">' + objectList.name + '</td>' +
-            					'<td href="#">' + objectList.category + '</td>' +
-            					'<td href="#">' + objectList.description + '</td>' +
-            					'<td href="#">' + objectList.color + '</td>' +
-            					'<td href="#">' + objectList.createdAt + '</td>' +
-            					'<td href="#">' + objectList.place + '</td>' +;
+            	item.innerHTML = '<td href="#">' + objectList[i].name + '</td>' +
+            					'<td href="#">' + objectList[i].category + '</td>' +
+            					'<td href="#">' + objectList[i].description + '</td>' +
+            					'<td href="#">' + objectList[i].color + '</td>' +
+            					'<td href="#">' + objectList[i].createdAt + '</td>' +
+            					'<td href="#">' + objectList[i].place + '</td>' +;
             	table.appendChild(item);
         	}
 			

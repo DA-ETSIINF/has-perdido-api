@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Mi Perfil - DA ETSIINF</title>
+		<link href="style.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <link href="styles.css" rel="stylesheet" type="text/css">
+	</head>
+	<body class="loggedin">
+		<nav class="navtop">
+			<div>
+				<h1>Mi Perfil - Has Perdido</h1>
+				<a href="profile.php"><i class="fas fa-user-circle"></i>Mi Perfil</a>
+				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Cerrar Sesión</a>
+			</div>
+		</nav>
+		<div class="content">
+			<h3><?=$_SESSION['username']?>!</h3>
+		</div>
+		<div>
+			<form action="UpdateUser.php" method="post" autocomplete="off">
+                <label for="name">
+                    <i class="fas fa-user"></i>
+                </label>
+                <input type="text" name="name" placeholder="Nombre y apellidos" id="name" required>
+				
+				<label for="username">
+					<i class="fas fa-user"></i>
+				</label>
+				<input type="text" name="username" placeholder="Nombre de usuario" id="username" required>
+				
+				<label for="email">
+					<i class="fas fa-envelope"></i>
+				</label>
+                <input type="email" name="email" placeholder="Correo" id="email" required>
+				
+				<label for="password">
+                    <i class="fas fa-lock"></i>
+                </label>
+                <input type="password" name="password" placeholder="Contraseña" id="password" required>
+				
+				<input type="submit" value="Guardar cambios">
+				<input type="button" value="Cancelar">
+			</form>
+		</div>
+	</body>
+	<footer>
+		<!-- Links a distintas páginas de delegación-->
+	</footer>
+</html>
